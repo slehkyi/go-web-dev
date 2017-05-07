@@ -5,7 +5,7 @@ import "fmt"
 type person struct {
 	fname string
 	lname string
-	age int
+	age   int
 }
 
 type secretAgent struct {
@@ -36,7 +36,7 @@ func main() {
 		"Bond",
 		40,
 	},
-	true}
+		true}
 	fmt.Println(p1.fname)
 	p1.speak()
 	fmt.Println(sa1.fname, sa1.lname)

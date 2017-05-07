@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	m := map[string]int{
-		"first": 1,
+		"first":  1,
 		"second": 2,
 	}
 	fmt.Println(m)

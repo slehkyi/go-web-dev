@@ -1,9 +1,9 @@
 package main
 
 import (
-	"text/template"
 	"log"
 	"os"
+	"text/template"
 )
 
 var tpl *template.Template

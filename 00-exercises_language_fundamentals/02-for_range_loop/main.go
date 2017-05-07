@@ -1,14 +1,14 @@
 package main
 
 import (
-"fmt"
+	"fmt"
 )
 
 func main() {
 	// slice
 	// composite literal; slice literal
 	x := []int{7, 9, 42}
-	for i , _ := range x {
+	for i, _ := range x {
 		fmt.Println(i, "-", x[i])
 	}
 

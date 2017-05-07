@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"log"
 	"io"
+	"log"
+	"os"
 	"strings"
 )
 
@@ -27,7 +27,7 @@ func main() {
 	if err != nil {
 		log.Fatal("error creating file", err)
 	}
-	defer  nf.Close()
+	defer nf.Close()
 
 	io.Copy(nf, strings.NewReader(str))
 }

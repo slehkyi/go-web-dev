@@ -13,7 +13,16 @@ func init() {
 }
 
 func main() {
-	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", `Release self-focus; embrace other-focus`)
+
+	sages := map[string]string{
+		"India": "Gandhi",
+		"America": "MLK",
+		"Meditate": "Buddha",
+		"Love": "Jesus",
+		"Prophet": "Muhammad",
+	}
+
+	err := tpl.Execute(os.Stdout, sages)
 	if err != nil {
 		log.Fatalln(err)
 	}

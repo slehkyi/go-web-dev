@@ -27,7 +27,7 @@ func main() {
 	fmt.Println(m1)
 
 	// struct
-	type str struct{
+	type str struct {
 		field1 string
 		field2 int
 	}

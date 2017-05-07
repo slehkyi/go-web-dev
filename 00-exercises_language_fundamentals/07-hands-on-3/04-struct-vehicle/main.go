@@ -60,4 +60,4 @@ func main() {
 
 /*
 Tasks 6-10 from https://goo.gl/LpQDzH
- */
+*/
