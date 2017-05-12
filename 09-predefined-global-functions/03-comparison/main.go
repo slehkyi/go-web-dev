@@ -1,17 +1,12 @@
 package main
 
 import (
-	"log"
-	"os"
 	"text/template"
+	"os"
+	"log"
 )
 
 var tpl *template.Template
-
-type sage struct {
-	Name  string
-	Motto string
-}
 
 func init() {
 	tpl = template.Must(template.ParseFiles("index.gohtml"))
@@ -19,12 +14,15 @@ func init() {
 
 func main() {
 
-	buddha := sage{
-		Name:  "Buddha",
-		Motto: "The belief of no beliefs",
+	g1 := struct {
+		Score1 int
+		Score2 int
+	}{
+		42,
+		13,
 	}
 
-	err := tpl.Execute(os.Stdout, buddha)
+	err := tpl.Execute(os.Stdout, g1)
 	if err != nil {
 		log.Fatalln(err)
 	}
