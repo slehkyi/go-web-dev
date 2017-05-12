@@ -9,7 +9,7 @@ import (
 var tpl *template.Template
 
 type sage struct {
-	Name string
+	Name  string
 	Motto string
 }
 
@@ -20,8 +20,8 @@ func init() {
 func main() {
 
 	buddha := sage{
-		Name:"Buddha",
-		Motto:"The belief of no beliefs",
+		Name:  "Buddha",
+		Motto: "The belief of no beliefs",
 	}
 
 	err := tpl.Execute(os.Stdout, buddha)
