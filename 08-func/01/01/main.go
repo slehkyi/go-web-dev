@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"text/template"
+	"strings"
 )
 
 var tpl *template.Template
@@ -24,8 +25,21 @@ type items struct {
 	Transport []car
 }
 
+var fm = template.FuncMap{
+	"uc": strings.ToUpper,
+	"ft": firstThree,
+}
+
 func init() {
-	tpl = template.Must(template.ParseFiles("index.gohtml"))
+	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("index.gohtml"))
+}
+
+func firstThree(s string) string {
+	s = strings.TrimSpace(s)
+	if len(s) >= 3 {
+		s = s[:3]
+	}
+	return s
 }
 
 func main() {
@@ -65,7 +79,7 @@ func main() {
 		Transport:cars,
 	}
 
-	err := tpl.Execute(os.Stdout, data)
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", data)
 	if err != nil {
 		log.Fatalln(err)
 	}

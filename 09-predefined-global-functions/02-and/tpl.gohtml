@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Peeps</title>
+</head>
+<body>
+EXAMPLE #1
+{{range .}}
+    {{if .Name}}
+        EXAMPLE #1 - {{.Name}}
+    {{end}}
+{{end}}
+
+EXAMPLE #2
+{{range .}}
+    {{if and .Name .Admin}}
+        EXAMPLE #2 - {{.Name}} - Admin - {{.Admin}}
+    {{end}}
+{{end}}
+</body>
+</html>

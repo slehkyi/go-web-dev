@@ -9,11 +9,11 @@ import (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
+	tpl = template.Must(template.ParseFiles("index.gohtml"))
 }
 
 func main() {
-	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", `Release self-focus; embrace other-focus`)
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", `Release self-focus; embrace other-focus`)
 	if err != nil {
 		log.Fatalln(err)
 	}
