@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
-	"fmt"
 )
 
 type user struct {
@@ -21,12 +20,15 @@ var dbSessions = map[string]string{} // sessionID, userID
 
 func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
+	bs, _ := bcrypt.GenerateFromPassword([]byte("password"), bcrypt.MinCost)
+	dbUsers["test@test.com"] = user{"test@test.com", bs, "James", "Bond"}
 }
 
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/bar", bar)
 	http.HandleFunc("/signup", signup)
+	http.HandleFunc("/login", login)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
@@ -89,4 +91,39 @@ func signup(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tpl.ExecuteTemplate(w, "signup.gohtml", nil)
+}
+
+func login(w http.ResponseWriter, r *http.Request) {
+	if alreadyLoggedIn(r) {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	// process form submission
+	if r.Method == http.MethodPost {
+		un := r.FormValue("username")
+		p := r.FormValue("password")
+		// is there a username?
+		u, ok := dbUsers[un]
+		if !ok {
+			http.Error(w, "User doesn't exist", http.StatusForbidden)
+			return
+		}
+		// does the entered password match the stored one?
+		err := bcrypt.CompareHashAndPassword(u.Password, []byte(p))
+		if err != nil {
+			http.Error(w, "Password does not match", http.StatusForbidden)
+			return
+		}
+		// create session
+		sID := uuid.NewV4()
+		c := &http.Cookie{
+			Name: "session",
+			Value: sID.String(),
+		}
+		http.SetCookie(w, c)
+		dbSessions[c.Value] = un
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	tpl.ExecuteTemplate(w, "login.gohtml", nil)
 }

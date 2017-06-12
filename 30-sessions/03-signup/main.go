@@ -1,4 +1,4 @@
-package temp
+package main
 
 import (
 	"html/template"
@@ -30,7 +30,6 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-
 	u := getUser(w, r)
 	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
@@ -45,7 +44,7 @@ func bar(w http.ResponseWriter, r *http.Request) {
 }
 
 func signup(w http.ResponseWriter, r *http.Request) {
-	if !alreadyLoggedIn(r) {
+	if alreadyLoggedIn(r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
