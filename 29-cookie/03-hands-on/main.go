@@ -3,29 +3,36 @@ package main
 import (
 	"net/http"
 	"fmt"
+	"strconv"
+	"log"
+	"io"
 )
 
 func main() {
-	http.HandleFunc("/", set)
-	http.HandleFunc("/read", read)
+	http.HandleFunc("/", foo)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
 
-func set(w http.ResponseWriter, r *http.Request) {
-	http.SetCookie(w, &http.Cookie{
-		Name:"my-cookie",
-		Value:"some-value",
-	})
-	fmt.Fprintln(w, "Cookie written - check yopu browser")
-	fmt.Fprintln(w, "in chrome go to: dev tools / application / cookies")
-}
+func foo(w http.ResponseWriter, r *http.Request) {
 
-func read(w http.ResponseWriter, r *http.Request) {
-	c, err := r.Cookie("my-cookie")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
+	cookie, err := r.Cookie("my-cookie")
+
+	if err == http.ErrNoCookie {
+		cookie = &http.Cookie{
+			Name:"my-cookie",
+			Value: "0",
+		}
 	}
-	fmt.Fprintln(w, "Your cookie: ", c)
+
+	count, err := strconv.Atoi(cookie.Value)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	count++
+	cookie.Value = strconv.Itoa(count)
+
+	http.SetCookie(w, cookie)
+	io.WriteString(w, cookie.Value)
+
 }
