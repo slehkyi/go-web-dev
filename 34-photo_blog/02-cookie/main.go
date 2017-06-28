@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/satori/go.uuid"
 	"html/template"
 	"net/http"
-	"github.com/satori/go.uuid"
 )
 
 var tpl *template.Template
@@ -28,8 +28,8 @@ func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
 	if err != nil {
 		id := uuid.NewV4()
 		c = &http.Cookie{
-			Name:"session",
-			Value:id.String(),
+			Name:  "session",
+			Value: id.String(),
 		}
 		http.SetCookie(w, c)
 	}

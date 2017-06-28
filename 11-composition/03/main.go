@@ -1,9 +1,9 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 type course struct {
@@ -11,7 +11,7 @@ type course struct {
 }
 
 type semester struct {
-	Term string
+	Term    string
 	Courses []course
 }
 
@@ -27,18 +27,18 @@ func init() {
 
 func main() {
 	y := year{
-		Fall:semester{
+		Fall: semester{
 			Term: "Fall",
-			Courses:[]course{
-				course{"CSCI-40","Intro to Go", "4"},
-				course{"CSCI-50","Web with Go", "4"},
+			Courses: []course{
+				course{"CSCI-40", "Intro to Go", "4"},
+				course{"CSCI-50", "Web with Go", "4"},
 			},
 		},
-		Spring:semester{
-			Term:"Spring",
-			Courses:[]course{
-				course{"CSCI-60","Advanced Go", "5"},
-				course{"CSCI-70","Advanced Web with Go", "5"},
+		Spring: semester{
+			Term: "Spring",
+			Courses: []course{
+				course{"CSCI-60", "Advanced Go", "5"},
+				course{"CSCI-70", "Advanced Web with Go", "5"},
 			},
 		},
 	}

@@ -1,17 +1,17 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 type hotel struct {
-	Name string
+	Name    string
 	Address string
-	City string
-	Zip string
-	Region string
+	City    string
+	Zip     string
+	Region  string
 }
 
 type hotels []hotel

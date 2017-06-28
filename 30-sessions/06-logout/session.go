@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"github.com/satori/go.uuid"
+	"net/http"
 )
 
 func getUser(w http.ResponseWriter, r *http.Request) user {
@@ -11,8 +11,8 @@ func getUser(w http.ResponseWriter, r *http.Request) user {
 	if err != nil {
 		sID := uuid.NewV4()
 		c = &http.Cookie{
-			Name:"session",
-			Value:sID.String(),
+			Name:  "session",
+			Value: sID.String(),
 		}
 	}
 	http.SetCookie(w, c)

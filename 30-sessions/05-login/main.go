@@ -1,21 +1,21 @@
 package main
 
 import (
-	"html/template"
-	"net/http"
 	"github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
+	"html/template"
+	"net/http"
 )
 
 type user struct {
 	UserName string
 	Password []byte
-	First string
-	Last string
+	First    string
+	Last     string
 }
 
 var tpl *template.Template
-var dbUsers = map[string]user{} // userID, user{}
+var dbUsers = map[string]user{}      // userID, user{}
 var dbSessions = map[string]string{} // sessionID, userID
 
 func init() {
@@ -70,8 +70,8 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		//create session
 		sID := uuid.NewV4()
 		c := &http.Cookie{
-			Name:"session",
-			Value:sID.String(),
+			Name:  "session",
+			Value: sID.String(),
 		}
 		http.SetCookie(w, c)
 		dbSessions[c.Value] = un
@@ -117,7 +117,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		// create session
 		sID := uuid.NewV4()
 		c := &http.Cookie{
-			Name: "session",
+			Name:  "session",
 			Value: sID.String(),
 		}
 		http.SetCookie(w, c)

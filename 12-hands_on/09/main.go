@@ -1,22 +1,22 @@
 package main
 
 import (
+	"encoding/csv"
+	"log"
+	"net/http"
+	"os"
+	"strconv"
 	"text/template"
 	"time"
-	"net/http"
-	"log"
-	"os"
-	"encoding/csv"
-	"strconv"
 )
 
 type Row struct {
-	Date time.Time
-	Open float64
-	High float64
-	Low float64
-	Close float64
-	Volume int64
+	Date     time.Time
+	Open     float64
+	High     float64
+	Low      float64
+	Close    float64
+	Volume   int64
 	AdjClose float64
 }
 
@@ -72,12 +72,12 @@ func prs(filePath string) data {
 		adjClose, _ := strconv.ParseFloat(row[6], 64)
 
 		rows = append(rows, Row{
-			Date: date,
-			Open: open,
-			High: high,
-			Low: low,
-			Close: close,
-			Volume: volume,
+			Date:     date,
+			Open:     open,
+			High:     high,
+			Low:      low,
+			Close:    close,
+			Volume:   volume,
 			AdjClose: adjClose,
 		})
 	}

@@ -1,14 +1,14 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 type person struct {
 	Name string
-	Age int
+	Age  int
 }
 
 type doubleZero struct {
@@ -26,7 +26,7 @@ func main() {
 	p1 := doubleZero{
 		person{
 			Name: "James Bond",
-			Age: 42,
+			Age:  42,
 		},
 		false,
 	}

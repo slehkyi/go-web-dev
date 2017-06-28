@@ -1,16 +1,16 @@
 package main
 
 import (
+	"github.com/satori/go.uuid"
 	"html/template"
 	"net/http"
-	"github.com/satori/go.uuid"
 	"strings"
 )
 
 var tpl *template.Template
 
 type UserPics struct {
-	sID string
+	sID     string
 	PicName string
 }
 
@@ -37,8 +37,8 @@ func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
 	if err != nil {
 		id := uuid.NewV4()
 		c = &http.Cookie{
-			Name:"session",
-			Value:id.String(),
+			Name:  "session",
+			Value: id.String(),
 		}
 		http.SetCookie(w, c)
 	}
@@ -53,13 +53,13 @@ func appendString(w http.ResponseWriter, c *http.Cookie) *http.Cookie {
 
 	//add pics to cookie's value if don't exist
 	s := c.Value
-	if !strings.Contains(s,pic1) {
+	if !strings.Contains(s, pic1) {
 		s += "|" + pic1
 	}
-	if !strings.Contains(s,pic2) {
+	if !strings.Contains(s, pic2) {
 		s += "|" + pic2
 	}
-	if !strings.Contains(s,pic3) {
+	if !strings.Contains(s, pic3) {
 		s += "|" + pic3
 	}
 	c.Value = s

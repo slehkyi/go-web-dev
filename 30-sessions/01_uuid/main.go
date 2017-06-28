@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/satori/go.uuid"
 	"net/http"
-	"fmt"
 )
 
 func main() {
@@ -17,11 +17,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		id := uuid.NewV4()
 		cookie = &http.Cookie{
-			Name:"session",
-			Value:id.String(),
+			Name:  "session",
+			Value: id.String(),
 			// Secure: true,
-			HttpOnly:true,
-			Path:"/",
+			HttpOnly: true,
+			Path:     "/",
 		}
 		http.SetCookie(w, cookie)
 	}

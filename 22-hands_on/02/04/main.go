@@ -5,11 +5,11 @@
 package main
 
 import (
-	"net"
-	"log"
-	"fmt"
 	"bufio"
+	"fmt"
 	"io"
+	"log"
+	"net"
 )
 
 func main() {

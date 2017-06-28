@@ -1,10 +1,10 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
 	"math"
+	"os"
+	"text/template"
 )
 
 var tpl *template.Template
@@ -18,7 +18,7 @@ func double(x int) int {
 }
 
 func square(x int) float64 {
-	return math.Pow(float64(x),2)
+	return math.Pow(float64(x), 2)
 }
 
 func sqRoot(x float64) float64 {
@@ -26,9 +26,9 @@ func sqRoot(x float64) float64 {
 }
 
 var fm = template.FuncMap{
-	"fdbl": double,
-	"fsq": square,
-	"fsqrt": sqRoot,
+	"fdbl":     double,
+	"fsq":      square,
+	"fsqrt":    sqRoot,
 	"mathSqrt": math.Sqrt,
 }
 

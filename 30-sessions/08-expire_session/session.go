@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-	"github.com/satori/go.uuid"
 	"fmt"
+	"github.com/satori/go.uuid"
+	"net/http"
 	"time"
 )
 
@@ -13,8 +13,8 @@ func getUser(w http.ResponseWriter, r *http.Request) user {
 	if err != nil {
 		sID := uuid.NewV4()
 		c = &http.Cookie{
-			Name:"session",
-			Value:sID.String(),
+			Name:  "session",
+			Value: sID.String(),
 		}
 	}
 	c.MaxAge = sessionLength

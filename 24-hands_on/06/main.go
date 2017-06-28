@@ -1,14 +1,14 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
-	"html/template"
 )
 
 var tpl *template.Template
 
-func init()  {
+func init() {
 	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
 }
 

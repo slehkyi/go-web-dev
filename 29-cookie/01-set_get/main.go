@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 )
 
 func main() {
@@ -14,8 +14,8 @@ func main() {
 
 func set(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
-		Name:"my-cookie",
-		Value:"some-value",
+		Name:  "my-cookie",
+		Value: "some-value",
 	})
 	fmt.Fprintln(w, "Cookie written - check yopu browser")
 	fmt.Fprintln(w, "in chrome go to: dev tools / application / cookies")

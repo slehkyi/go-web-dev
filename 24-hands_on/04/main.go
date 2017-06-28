@@ -1,9 +1,9 @@
 package main
 
 import (
-"html/template"
-"net/http"
-"log"
+	"html/template"
+	"log"
+	"net/http"
 )
 
 var tpl *template.Template

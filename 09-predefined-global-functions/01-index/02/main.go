@@ -1,9 +1,9 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 var tpl *template.Template
@@ -14,7 +14,7 @@ func init() {
 
 func main() {
 
-	xs := []string{"zero", "one", "two", "three", "four", "five",}
+	xs := []string{"zero", "one", "two", "three", "four", "five"}
 
 	data := struct {
 		Words []string

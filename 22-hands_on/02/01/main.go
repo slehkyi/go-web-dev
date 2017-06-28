@@ -9,9 +9,9 @@
 package main
 
 import (
-	"net"
-	"log"
 	"fmt"
+	"log"
+	"net"
 )
 
 func main() {

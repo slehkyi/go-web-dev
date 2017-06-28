@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-func d (res http.ResponseWriter, req *http.Request) {
+func d(res http.ResponseWriter, req *http.Request) {
 	io.WriteString(res, "dog dog dog")
 }
 
-func c (res http.ResponseWriter, req *http.Request) {
+func c(res http.ResponseWriter, req *http.Request) {
 	io.WriteString(res, "cat cat cat")
 }
 

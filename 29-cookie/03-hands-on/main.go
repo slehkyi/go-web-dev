@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
-	"strconv"
-	"log"
 	"io"
+	"log"
+	"net/http"
+	"strconv"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func foo(w http.ResponseWriter, r *http.Request) {
 
 	if err == http.ErrNoCookie {
 		cookie = &http.Cookie{
-			Name:"my-cookie",
+			Name:  "my-cookie",
 			Value: "0",
 		}
 	}

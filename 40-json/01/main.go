@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
 	"encoding/json"
 	"log"
+	"net/http"
 )
 
 type person struct {
@@ -12,7 +12,7 @@ type person struct {
 	Items []string
 }
 
-func main()  {
+func main() {
 	http.HandleFunc("/", foo)
 	http.HandleFunc("/mshl", mshl)
 	http.HandleFunc("/encd", encd)

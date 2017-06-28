@@ -12,7 +12,7 @@ type item struct {
 }
 
 type meal struct {
-	Meal string
+	Meal  string
 	Items []item
 }
 

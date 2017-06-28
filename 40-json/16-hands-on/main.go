@@ -2,12 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 	"fmt"
+	"log"
 )
 
 type codes struct {
-	Code int
+	Code        int
 	Description string
 }
 

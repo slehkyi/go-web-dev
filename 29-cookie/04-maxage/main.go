@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 )
 
 func main() {
@@ -20,8 +20,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func set(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
-		Name:"session",
-		Value:"some-value",
+		Name:  "session",
+		Value: "some-value",
 	})
 	fmt.Fprint(w, `<h1><a href="/read">read</a></h1>`)
 }

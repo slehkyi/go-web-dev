@@ -2,8 +2,8 @@ package main
 
 import (
 	"html/template"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 var tpl *template.Template
@@ -13,8 +13,8 @@ func init() {
 }
 
 type person struct {
-	FirstName string
-	LastName string
+	FirstName  string
+	LastName   string
 	Subscribed bool
 }
 

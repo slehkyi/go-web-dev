@@ -1,14 +1,14 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 type person struct {
 	Name string
-	Age int
+	Age  int
 }
 
 var tpl *template.Template
@@ -20,7 +20,7 @@ func init() {
 func main() {
 	p1 := person{
 		Name: "James Bond",
-		Age: 42,
+		Age:  42,
 	}
 
 	err := tpl.Execute(os.Stdout, p1)

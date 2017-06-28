@@ -2,8 +2,8 @@ package main
 
 import (
 	"html/template"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 var tpl *template.Template
@@ -13,8 +13,8 @@ func init() {
 }
 
 type person struct {
-	FirstName string
-	LastName string
+	FirstName  string
+	LastName   string
 	Subscribed bool
 }
 
@@ -29,7 +29,7 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	l := r.FormValue("last")
 	s := r.FormValue("subscribe") == "on"
 
-	err := tpl.ExecuteTemplate(w, "index.gohtml", person{f,l,s})
+	err := tpl.ExecuteTemplate(w, "index.gohtml", person{f, l, s})
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		log.Fatalln(err)

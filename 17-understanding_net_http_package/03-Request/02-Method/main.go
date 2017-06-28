@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-	"log"
 	"html/template"
+	"log"
+	"net/http"
 	"net/url"
 )
 
@@ -16,7 +16,7 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 
 	data := struct {
-		Method string
+		Method      string
 		Submissions url.Values
 	}{
 		req.Method,

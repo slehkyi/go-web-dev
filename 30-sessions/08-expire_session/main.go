@@ -1,30 +1,31 @@
 package main
 
 import (
-	"html/template"
-	"net/http"
 	"github.com/satori/go.uuid"
 	"golang.org/x/crypto/bcrypt"
+	"html/template"
+	"net/http"
 	"time"
 )
 
 type user struct {
 	UserName string
 	Password []byte
-	First string
-	Last string
-	Role string
+	First    string
+	Last     string
+	Role     string
 }
 
 type session struct {
-	un string
+	un           string
 	lastActivity time.Time
 }
 
 var tpl *template.Template
-var dbUsers = map[string]user{} // userID, user{}
+var dbUsers = map[string]user{}       // userID, user{}
 var dbSessions = map[string]session{} // sessionID, session
 var dbSessionsCleaned time.Time
+
 const sessionLength int = 30
 
 func init() {
@@ -86,8 +87,8 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		//create session
 		sID := uuid.NewV4()
 		c := &http.Cookie{
-			Name:"session",
-			Value:sID.String(),
+			Name:  "session",
+			Value: sID.String(),
 		}
 		c.MaxAge = sessionLength
 		http.SetCookie(w, c)
@@ -134,7 +135,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		// create session
 		sID := uuid.NewV4()
 		c := &http.Cookie{
-			Name: "session",
+			Name:  "session",
 			Value: sID.String(),
 		}
 		c.MaxAge = sessionLength
@@ -157,8 +158,8 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	delete(dbSessions, c.Value)
 	// remove cookie
 	c = &http.Cookie{
-		Name: "session",
-		Value: "",
+		Name:   "session",
+		Value:  "",
 		MaxAge: -1,
 	}
 	http.SetCookie(w, c)

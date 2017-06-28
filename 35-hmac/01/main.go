@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"crypto/hmac"
 	"crypto/sha256"
+	"fmt"
 	"io"
 )
 
-func main()  {
+func main() {
 	c := getCode("test@example.com")
 	fmt.Println(c)
 	c = getCode("test@exampl.com")

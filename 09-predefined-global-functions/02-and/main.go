@@ -1,13 +1,13 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 type user struct {
-	Name string
+	Name  string
 	Motto string
 	Admin bool
 }
@@ -21,19 +21,19 @@ func init() {
 func main() {
 
 	u1 := user{
-		Name: "Buddha",
+		Name:  "Buddha",
 		Motto: "The belief",
 		Admin: false,
 	}
 
 	u2 := user{
-		Name: "Gandhi",
+		Name:  "Gandhi",
 		Motto: "Be the change",
 		Admin: true,
 	}
 
 	u3 := user{
-		Name: "",
+		Name:  "",
 		Motto: "Nobody",
 		Admin: true,
 	}

@@ -1,10 +1,10 @@
 package main
 
 import (
+	"log"
+	"os"
 	"text/template"
 	"time"
-	"os"
-	"log"
 )
 
 var tpl *template.Template

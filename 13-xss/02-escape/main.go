@@ -2,14 +2,14 @@ package main
 
 import (
 	"html/template"
-	"os"
 	"log"
+	"os"
 )
 
 type Page struct {
-	Title string
+	Title   string
 	Heading string
-	Input string
+	Input   string
 }
 
 var tpl *template.Template
@@ -21,9 +21,9 @@ func init() {
 func main() {
 
 	home := Page{
-		Title: "Escaped",
+		Title:   "Escaped",
 		Heading: "Danger is escaped with html/template",
-		Input: `<script>alert("Yow!");</script>`,
+		Input:   `<script>alert("Yow!");</script>`,
 	}
 
 	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", home)

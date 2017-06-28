@@ -5,10 +5,10 @@
 package main
 
 import (
-	"io"
-	"net/http"
 	"html/template"
+	"io"
 	"log"
+	"net/http"
 )
 
 func main() {

@@ -1,14 +1,14 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 type person struct {
 	Name string
-	Age int
+	Age  int
 }
 
 func (p person) SomeProcessing() int {
@@ -31,9 +31,9 @@ func init() {
 
 func main() {
 	p1 := person{
-			Name: "James Bond",
-			Age: 42,
-		}
+		Name: "James Bond",
+		Age:  42,
+	}
 
 	err := tpl.Execute(os.Stdout, p1)
 	if err != nil {
